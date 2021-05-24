@@ -62,6 +62,7 @@ for i in range( 0, len(poses) ):
     first_peptide_resid = pose.size() - n_peptide_residues + 1
 
     # poor ahead-of-time curation on my part
+
     peptide_resids = []
     has_bad_residue = False
     for resid in range( first_peptide_resid, pose.size()+1 ):
@@ -71,6 +72,7 @@ for i in range( 0, len(poses) ):
     if has_bad_residue:
         continue
 
+    peptide_resids = [ i for i in range( first_peptide_resid, pose.size()+1 ) ]
     assert len(peptide_resids) == n_peptide_residues
 
     X, A, E, resids = data_maker.generate_input( wrapped_pose, focus_resids=peptide_resids, data_cache=cache, sparse=False )
