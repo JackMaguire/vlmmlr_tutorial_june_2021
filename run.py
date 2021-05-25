@@ -61,17 +61,6 @@ for i in range( 0, len(poses) ):
     n_peptide_residues = len( pose.chain_sequence(2) )
     first_peptide_resid = pose.size() - n_peptide_residues + 1
 
-    # poor ahead-of-time curation on my part
-
-    peptide_resids = []
-    has_bad_residue = False
-    for resid in range( first_peptide_resid, pose.size()+1 ):
-        peptide_resids.append( resid )
-        if pose.residue(resid).name3() in [ 'DAB', 'ORN', 'DPP' ]:
-            has_bad_residue = True
-    if has_bad_residue:
-        continue
-
     peptide_resids = [ i for i in range( first_peptide_resid, pose.size()+1 ) ]
     assert len(peptide_resids) == n_peptide_residues
 
