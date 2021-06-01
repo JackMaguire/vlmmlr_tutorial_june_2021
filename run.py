@@ -82,7 +82,7 @@ print( As.shape )
 print( Es.shape )
 print( outs.shape )
 
-X_in, A_in, E_in = data_maker.generate_XAE_input_tensors()
+X_in, A_in, E_in = data_maker.generate_XAE_input_layers()
 X = ECCConv( 10, activation='relu' )([X_in, A_in, E_in])
 X = ECCConv( 10, activation='relu' )([X,    A_in, E_in])
 X = GlobalSumPool()(X)
